@@ -1,0 +1,10 @@
+{
+  "name": "mirador-wrapper",
+  "version": "1.0.0",
+  "description": "A simple deployment of Mirador for the Wikimedia Toolforge.",
+  "author": "JeanFred",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "mirador": "^2.6.0"
+  }
+}

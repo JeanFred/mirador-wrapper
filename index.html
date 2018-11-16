@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" type="text/css" href="node_modules/mirador/dist/css/mirador-combined.css">
+    <title>Mirador Viewer</title>
+    <style type="text/css">
+      #viewer {
+       width: 100%;
+       height: 100%;
+       position: fixed;
+     }
+    </style>
+  </head>
+  <body>
+    <div id="viewer"></div>
+    <script src="node_modules/mirador/dist/mirador.js"></script>
+    <!-- Taken from https://iiif.si.edu/mirador/ -->
+    <script type="text/javascript">
+      function getUrlVar(key){
+        var result = new RegExp(key + "=([^&]*)", "i").exec(window.location.search);
+        return result && unescape(result[1]) || "";
+      }
+
+      var manifest_param = getUrlVar("manifest");
+      var windowObjects = [];
+
+      if (manifest_param) {
+        windowObjects = {
+          "loadedManifest" : manifest_param,
+          "viewType" : "ImageView"
+        }
+      }
+      function getWindowObjects(){
+        return windowObjects;
+      }
+
+      $(function() {
+           // Called without "let" or "var"
+           // so we can play with it in the browser
+           mirador = Mirador({
+             "id": "viewer",
+             "layout": "1x1",
+             "data": [
+              { "manifestUri": getUrlVar("manifest"), "location":"manifest-url" },
+             ],
+             "windowObjects": [windowObjects],
+             "sidePanelOptions" : {
+               "tocTabAvailable": true,
+               "layersTabAvailable": false,
+               "searchTabAvailable": false
+             }
+           });
+         });
+    </script>
+  </body>
+</html>
