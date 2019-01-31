@@ -5,6 +5,6 @@
   "author": "JeanFred",
   "license": "Apache 2.0",
   "dependencies": {
-    "mirador": "^2.6.0"
+    "mirador": "^2.7.2"
   }
 }
